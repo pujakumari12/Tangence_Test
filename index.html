@@ -49,9 +49,9 @@
 
                                       <div class="form-sec">
                                           <input type="text" placeholder="Your name"><br/>
-                                          <input type="text" placeholder="Your E-mail"><br/>
+                                          <input type="text" id="emailInput" placeholder="Your E-mail"><br/>
                                           <input type="text" placeholder="Your Business Name"><br/><br/>
-                                          <button class="common_btn">Submit</button>
+                                          <button id ="submit" class="common_btn">Submit</button>
                                       </div>
                                       <div class="social">
                                             <a class="fa fa-linkedin" title="" target="_blank" href="#"></a>
@@ -66,5 +66,26 @@
             </div>
           </div>
 	</div>
+	<script type="text/javascript">
+		let emailIn = document.getElementById("emailInput");
+		let submitBtn = document.getElementById("submit");
+
+		submitBtn.addEventListener("click", (e)=>{
+		  let email = emailIn.value;
+		  checkEmail(e, email)
+		})
+
+		function checkEmail(e, val){
+		  let pat = /\w+@{1}\w+\.+\w+/
+		  let flag = val.match(pat)
+		  if(flag == null){
+			e.preventDefault();
+			alert("Please enter correct email id");			
+		  }else{
+			alert("Sucessfully Submitted")  
+		  }
+		  
+		}
+	</script>
 </body>	
 </html>
